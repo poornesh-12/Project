@@ -17,25 +17,9 @@ pipeline {
             }
         }
 
-        stage('Build & Test') {
+        stage('Build All Modules') {
             steps {
                 sh "mvn clean install -Dmaven.test.failure.ignore=true"
-            }
-        }
-
-        stage('Backend Package') {
-            steps {
-                dir("backend") {
-                    sh "mvn package -DskipTests"
-                }
-            }
-        }
-
-        stage('Frontend Build') {
-            steps {
-                dir("frontend") {
-                    sh "mvn package -DskipTests"
-                }
             }
         }
 
